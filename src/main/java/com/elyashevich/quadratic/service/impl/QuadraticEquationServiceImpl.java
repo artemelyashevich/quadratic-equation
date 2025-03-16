@@ -12,7 +12,7 @@ public class QuadraticEquationServiceImpl implements QuadraticEquationService {
 
     @Override
     public QuadraticEquation create(final double a, final double b, final double c) throws QuadraticEquationException {
-        if (!this.validator.isValid(a, b, c)) {
+        if (this.validator.isValid(a, b, c)) {
             throw new QuadraticEquationException("All fields must be not null");
         }
         return new QuadraticEquation(a, b, c);

@@ -1,10 +1,7 @@
 package com.elyashevich.quadratic.entity;
 
-import java.util.Objects;
 
 public class QuadraticEquation {
-
-    private Long id;
 
     private double a;
 
@@ -14,19 +11,10 @@ public class QuadraticEquation {
 
     public QuadraticEquation() {}
 
-    public QuadraticEquation(Long id, double a, double b, double c) {
-        this.id = id;
+    public QuadraticEquation(double a, double b, double c) {
         this.a = a;
         this.b = b;
         this.c = c;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public double getA() {
@@ -64,16 +52,29 @@ public class QuadraticEquation {
         QuadraticEquation that = (QuadraticEquation) obj;
         return Double.compare(that.a, a) == 0 &&
                 Double.compare(that.b, b) == 0 &&
-                Double.compare(that.c, c) == 0 &&
-                (id == null ? that.id == null : id.equals(that.id));
+                Double.compare(that.c, c) == 0;
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
+        int result = 17;
+
         result = 31 * result + Double.hashCode(a);
+
         result = 31 * result + Double.hashCode(b);
+
         result = 31 * result + Double.hashCode(c);
+
         return result;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("QuadraticEquation{");
+        sb.append("a=").append(a);
+        sb.append(", b=").append(b);
+        sb.append(", c=").append(c);
+        sb.append('}');
+        return sb.toString();
     }
 }
